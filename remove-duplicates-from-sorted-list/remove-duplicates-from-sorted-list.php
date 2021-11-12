@@ -15,16 +15,15 @@ class Solution {
      * @param ListNode $head
      * @return ListNode
      */
-    function deleteDuplicates($head) {
-        $now = new ListNode($head->val);
-        $point = $now;
-        while($head != null){
-            if($point->val != $head->val){
-                $point->next= new ListNode($head->val);
-                $point = $point->next;
+     function deleteDuplicates($head) {
+  $current = $head;
+        while(!is_null($current) && !is_null($current->next)) {
+            if ($current->next->val == $current->val) {
+                $current->next = $current->next->next;
+            } else {
+                $current = $current->next;
             }
-            $head = $head->next;
         }
-        return $now;
+        return $head;
     }
 }
