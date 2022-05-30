@@ -4,7 +4,7 @@ class Solution {
         for (first in 0 until numsCount) {
             for (second in first + 1 until numsCount) {
                 var sum = nums[first] + nums[second]
-                if( sum == target){
+                if( sum== target){
                     return intArrayOf(first, second)
                 }
             }
