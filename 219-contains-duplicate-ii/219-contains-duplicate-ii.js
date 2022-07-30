@@ -11,7 +11,7 @@ var containsNearbyDuplicate = function(nums, k) {
         }
         arr.push(num);
         if(arr.length > k){
-            arr.splice(arr.indexOf(nums[index - k]), 1)
+            arr.splice(0, 1)
         }
         
     }
