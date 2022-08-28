@@ -3,15 +3,15 @@
  * @return {number[]}
  */
 var findDisappearedNumbers = function(nums) {
-    const map = new Map()
+    const list = [];
     const disappearedList = [];
     
     for(num of nums){
-        map.set(num, '1')
+        list.push(num)
     }
     
     for(let i =1; i < nums.length + 1; i++){
-        if(!map.has(i)){
+        if(!list.includes(i)){
             disappearedList.push(i);
         }
     }
