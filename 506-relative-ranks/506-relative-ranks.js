@@ -22,8 +22,7 @@ var findRelativeRanks = function(score) {
         }
         map.set(rankList[i],`${i+1}`)
     }
-    console.log(map)
-    console.log(score)
+
     
     return score.map((score)=>map.get(score))
 };
