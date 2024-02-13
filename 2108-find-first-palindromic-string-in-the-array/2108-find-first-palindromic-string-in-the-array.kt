@@ -1,6 +1,10 @@
 class Solution {
     fun firstPalindrome(words: Array<String>): String {
-        val palindromes = words.filter { it == it.reversed() }
-        return palindromes.firstOrNull() ?: ""
+        words.forEach { 
+            if(it == it.reversed()){
+                return it
+            }
+        }
+        return ""
     }
 }
