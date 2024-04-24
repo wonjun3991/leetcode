@@ -1,23 +1,17 @@
 class Solution {
-    private val memoization = hashMapOf<Int, Int>()
-
-    fun tribonacci(n: Int): Int {
-        if(n == 0){
-            return 0
-        }
-        
-        if(n < 3){
-            return 1
-        }
-        
-        memoization[0] = 0
-        memoization[1] = 1
-        memoization[2] = 1
-
-        for(v in 3..<n){
-            memoization[v] = memoization[v-1]!! + memoization[v-2]!! + memoization[v-3]!!
+    fun tribonacci(n: Int, first: Int = 0, second: Int = 1, third: Int = 1): Int {
+        if (n == 0) {
+            return first
         }
 
-        return memoization[n-1]!! + memoization[n-2]!! + memoization[n-3]!!
+        if (n == 1) {
+            return second
+        }
+
+        if (n == 2) {
+            return third
+        }
+
+        return tribonacci(n - 1, second, third, first + second + third)
     }
 }
