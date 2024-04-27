@@ -46,7 +46,7 @@ class Solution {
             leaves = newLeaves;
         }
 
-        // The remaining nodes are the centroids of the graph
+        
         return leaves;
     }
 }
