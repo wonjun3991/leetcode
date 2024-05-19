@@ -1,31 +1,28 @@
 class UnionFind(size: Int) {
-    var parent: IntArray = IntArray(size)
-    var rank: IntArray
+    private val root = IntArray(size)
 
     init {
-        for (i in 0 until size) parent[i] = i
-        rank = IntArray(size)
+        for (i in 0 until size) {
+            root[i] = i
+        }
     }
 
     fun find(x: Int): Int {
-        if (parent[x] != x) parent[x] = find(parent[x])
-        return parent[x]
+        var x = x
+        while (x != root[x]) {
+            x = root[x]
+        }
+        return x
     }
 
-    fun union_set(x: Int, y: Int) {
-        val xset = find(x)
-        val yset = find(y)
-        if (xset == yset) {
-            return
-        } else if (rank[xset] < rank[yset]) {
-            parent[xset] = yset
-        } else if (rank[xset] > rank[yset]) {
-            parent[yset] = xset
-        } else {
-            parent[yset] = xset
-            rank[xset]++
+    fun union(x: Int, y: Int) {
+        val rootX = find(x)
+        val rootY = find(y)
+        if (rootX != rootY) {
+            root[rootY] = rootX
         }
     }
+
 }
 
 class Solution {
@@ -38,7 +35,7 @@ class Solution {
             for (j in i + 1 until n) {
                 if (isConnected[i][j] == 1 && dsu.find(i) != dsu.find(j)) {
                     numberOfComponents--
-                    dsu.union_set(i, j)
+                    dsu.union(i, j)
                 }
             }
         }
