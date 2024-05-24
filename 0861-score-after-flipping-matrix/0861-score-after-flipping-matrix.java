@@ -6,14 +6,13 @@ class Solution {
         // Set first column
         for (int i = 0; i < m; i++) {
             if (grid[i][0] == 0) {
-                // Flip row
                 for (int j = 0; j < n; j++) {
                     grid[i][j] = 1 - grid[i][j];
                 }
             }
         }
 
-        // Optimize columns except first column
+        
         for (int j = 1; j < n; j++) {
             int countZero = 0;
             // Count zeros
