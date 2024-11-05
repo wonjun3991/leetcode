@@ -11,7 +11,6 @@ internal class Solution {
                 continue
             }
 
-            // If we have even count of characters, start new sequence
             if (consecutiveCount % 2 == 0) {
                 consecutiveCount = 1
             } else {
