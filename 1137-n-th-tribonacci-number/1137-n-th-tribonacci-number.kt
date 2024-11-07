@@ -1,17 +1,13 @@
 class Solution {
-    fun tribonacci(n: Int, first: Int = 0, second: Int = 1, third: Int = 1): Int {
-        if (n == 0) {
-            return first
+    fun tribonacci(n: Int): Int {
+        val fibonacci = mutableListOf<Int>()
+        fibonacci.add(0)
+        fibonacci.add(1)
+        fibonacci.add(1)
+        for (i in 3..n){
+            fibonacci.add(fibonacci[i - 1] + fibonacci[i - 2] + fibonacci[i - 3])
         }
 
-        if (n == 1) {
-            return second
-        }
-
-        if (n == 2) {
-            return third
-        }
-
-        return tribonacci(n - 1, second, third, first + second + third)
+        return fibonacci[n]
     }
 }
