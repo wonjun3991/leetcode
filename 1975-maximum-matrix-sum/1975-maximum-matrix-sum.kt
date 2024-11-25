@@ -1,26 +1,30 @@
 import kotlin.math.abs
+import kotlin.math.max
 import kotlin.math.min
 
 class Solution {
     fun maxMatrixSum(matrix: Array<IntArray>): Long {
-        var totalSum: Long = 0
-        var minAbsVal = Int.MAX_VALUE
+        var sum: Long = 0L
         var negativeCount = 0
+        var negativeMinValue: Int = Int.MAX_VALUE
 
-        for (row in matrix) {
-            for (column in row) {
-                totalSum += abs(column.toDouble()).toLong()
-                if (column < 0) {
+        matrix.forEach { row ->
+            row.forEach { column ->
+                val absColumn = abs(column)
+                sum += absColumn
+
+                negativeMinValue = min(negativeMinValue, absColumn)
+                if (column <= 0) {
+
                     negativeCount++
                 }
-                minAbsVal = min(minAbsVal.toDouble(), abs(column.toDouble())).toInt()
             }
         }
-        
+
         if (negativeCount % 2 != 0) {
-            totalSum -= (2 * minAbsVal).toLong()
+            sum -= negativeMinValue * 2
         }
 
-        return totalSum
+        return sum
     }
 }
