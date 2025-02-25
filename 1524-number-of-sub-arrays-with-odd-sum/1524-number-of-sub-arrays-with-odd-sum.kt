@@ -1,6 +1,6 @@
 import kotlin.math.pow
 
-internal class Solution {
+class Solution {
     fun numOfSubarrays(arr: IntArray): Int {
         val MOD = 10.0.pow(9).toInt() + 7
         val n = arr.size
